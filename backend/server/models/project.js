@@ -9,7 +9,7 @@ const projectSchema = new Schema({
         type: String
     },
     projectstatus:{
-        type: Boolean
+        type: String
     }
 });
 
