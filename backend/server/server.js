@@ -8,7 +8,7 @@ const passport = require("passport");
 ////////INITIALIZATIONS
 require("./config/db");
 require("colors");
-// require("./middlewares/passport")(passport);
+require("./middlewares/passport")(passport);
 
 ////////MIDDLEWARES
 app.use(passport.initialize());
