@@ -23,6 +23,8 @@
               placeholder="Ej. Carlos Ivan"
               id="exampleInputEmail1"
               aria-describedby="emaiHelp"
+              [(ngModel)]="user.username"
+              [ngModelOptions]="{standalone: true}"
             />
         </div>
         <div class="mb-4">
@@ -38,6 +40,8 @@
               placeholder="Ej. Mercado Marin"
               id="exampleInputEmail1"
               aria-describedby="emaiHelp"
+              [(ngModel)]="user.userlastname"
+              [ngModelOptions]="{standalone: true}"
             />
         </div>
         <div class="mb-4">
@@ -53,6 +57,8 @@
             id="exampleInputEmail1"
             placeholder="4498672378"
             aria-describedby="emaiHelp"
+            [(ngModel)]="user.userphonenumber"
+            [ngModelOptions]="{standalone: true}"
           />
       </div>
         <div class="mb-4">
@@ -68,6 +74,8 @@
               placeholder="Ej. karlos123jun@gmail.com"
               id="exampleInputEmail1"
               aria-describedby="emaiHelp"
+              [(ngModel)]="user.useremail"
+              [ngModelOptions]="{standalone: true}"
             />
         </div>
         <div class="mb-4">
@@ -82,22 +90,11 @@
               class="form-control bg-dark-x border-0"
               id="exampleInputEmail1"
               aria-describedby="emaiHelp"
+              [(ngModel)]="user.userpassword"
+              [ngModelOptions]="{standalone: true}"
             />
         </div>
-        <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Contraseña</label
-            >
-            <input
-              type="password"
-              class="form-control bg-dark-x border-0"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-            />
-        </div>
+        <button style="margin: 10px" class="btn btn-primary" (click)="postUsuario()">Registrar</button>
     </form>
     <a routerLink="/login" routerLinkActive="router-link-active" >Regresar</a>
     </div>

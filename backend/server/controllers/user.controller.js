@@ -3,6 +3,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const keys = require("../middlewares/keys");
 const bcrypt = require("bcryptjs");
+const validateRegisterInput = require("../validation/register");
 const app = express();
 
 
