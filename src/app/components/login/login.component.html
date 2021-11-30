@@ -1,69 +1,22 @@
-<div class="jumbotron">
-  <div
-    class="col-lg-5 aling-items-end min-vh-100"
-    style="
-      background-color: rgb(0, 0, 0);
-      align-items: flex-end;
-      justify-content: center;
-    "
-  >
-    <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 w-100 mb-auto">
-      <div class="px-lg-5 py-lg-4 p-4 w-100 aling-self-center">
-        <h1 class="text-light text-decoration-none">Bienvenido de vuelta</h1>
-        <form>
-          <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Email</label
-            >
-            <input
-              type="email"
-              class="form-control bg-dark-x border-0"
-              placeholder="Ingresa tu email"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="exampleInputPassword1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Contraseña</label
-            >
-            <input
-              type="password"
-              class="form-control bg-dark-x border-0"
-              placeholder="Ingresa tu Contraseña"
-              id="exampleInputPassword1"
-            />
-            <div class="text-center">
-              <a
-                href="#"
-                id="email-Hepl"
-                class="form-text text-light text-decoration-none"
-                >¿Has olvidado tu contraseña?</a
-              >
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">
-            Iniciar sesion
-          </button>
-        </form>
-      </div>
-    </div>
-    <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
-      <a
-        href="#"
-        class="text-light fw-bold text-decoration-none"
-        routerLink="/registro"
-        routerLinkActive="router-link-active"
-        >Crear cuenta ahora</a
-      >
-    </div>
+<div class="container">
+  <div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Log in</h2>
+
+    <form #frmLogin="ngForm" class="login-container" (ngSubmit)="onLogin(frmLogin)">
+      <p>
+        <input type="useremail" name="useremail" placeholder="Email" ngModel required>
+      </p>
+      <p>
+        <input type="userpassword" name="userpassword" placeholder="Password" ngModel required>
+      </p>
+      <p>
+        <input type="submit" value="Send">
+      </p>
+      <p>
+        <button class="boton" routerLink="/registro">Create Account</button>
+      </p>
+    </form>
   </div>
 </div>
-
-<router-outlet></router-outlet>

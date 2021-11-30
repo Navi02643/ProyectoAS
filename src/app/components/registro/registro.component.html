@@ -1,106 +1,38 @@
-<div class="jumbotron">
-  <div
-    class="col-lg-5 aling-items-end min-vh-100"
-    style="
-      background-color: rgb(0, 0, 0);
-      align-items: flex-end;
-      justify-content: center;
-    "
-  >
-    <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 w-100 mb-auto">
-      <div class="px-lg-5 py-lg-4 p-4 w-100 aling-self-center">
-        <form>
-          <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Nombre(s)</label
-            >
-            <input
-              type="text"
-              class="form-control bg-dark-x border-0"
-              placeholder="Ej. Carlos Ivan"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-              [(ngModel)]="user.username"
-              [ngModelOptions]="{standalone: true}"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Apellidos</label
-            >
-            <input
-              type="text"
-              class="form-control bg-dark-x border-0"
-              placeholder="Ej. Mercado Marin"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-              [(ngModel)]="user.userlastname"
-              [ngModelOptions]="{standalone: true}"
-            />
-        </div>
-        <div class="mb-4">
-          <label
-            for="exampleInputEmail1"
-            class="form-label fw-bold"
-            class="text-light text-decoration-none"
-            >Numero de teléfono</label
-          >
-          <input
-            type="number"
-            class="form-control bg-dark-x border-0"
-            id="exampleInputEmail1"
-            placeholder="4498672378"
-            aria-describedby="emaiHelp"
-            [(ngModel)]="user.userphonenumber"
-            [ngModelOptions]="{standalone: true}"
-          />
-      </div>
-        <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Correo</label
-            >
-            <input
-              type="email"
-              class="form-control bg-dark-x border-0"
-              placeholder="Ej. karlos123jun@gmail.com"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-              [(ngModel)]="user.useremail"
-              [ngModelOptions]="{standalone: true}"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="exampleInputEmail1"
-              class="form-label fw-bold"
-              class="text-light text-decoration-none"
-              >Contraseña</label
-            >
-            <input
-              type="password"
-              class="form-control bg-dark-x border-0"
-              id="exampleInputEmail1"
-              aria-describedby="emaiHelp"
-              [(ngModel)]="user.userpassword"
-              [ngModelOptions]="{standalone: true}"
-            />
-        </div>
-        <button style="margin: 10px" class="btn btn-primary" (click)="postUsuario()">Registrar</button>
+<div class="container">
+  <div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Create an account</h2>
+
+    <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
+      <p>
+        <input type="text" name="name" placeholder="name" ngModel required>
+      </p>
+      <p>
+        <input type="text" name="lastname" placeholder="lastname" ngModel required>
+      </p>
+      <p>
+        <input type="email" name="email" placeholder="Email" ngModel required>
+      </p>
+      <p>
+        <input type="number" name="phonenumber" placeholder="Phonenumber" ngModel required>
+      </p>
+      <p>
+        <select  type="text" name="role" ngModel required class="form-select" aria-label="Default select example" placeholder="Select Role">
+          <option selected>Open this select menu</option>
+          <option value="61a5669c58a92d4350c83668">Gerente</option>
+          <option value="61a566ae58a92d4350c8366b">Desarrollador</option>
+        </select>
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="Password" ngModel required>
+      </p>
+      <p>
+        <input type="submit" value="Register">
+      </p>
+      <p>
+        <button class="boton"  routerLink="/login">Back</button>
+      </p>
     </form>
-    <a routerLink="/login" routerLinkActive="router-link-active" >Regresar</a>
-    </div>
-    </div>
-    </div>
   </div>
-
-
-<router-outlet></router-outlet>
+</div>
