@@ -3,43 +3,13 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const keys = require("../middlewares/keys");
 const bcrypt = require("bcryptjs");
-const validateRegisterInput = require("../validation/register");
+const Users = require('../validation/Login&Registes');
 const app = express();
 
 
-app.post("/", async (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-  
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
-  
-    usermodel.findOne({ useremail: req.body.useremail }).then((user) => {
-      if (user) {
-        return res.status(400).json({ infoError: "Email already exists" });
-      } else {
-        const newUser = new usermodel({
-          username: req.body.username,
-          userlastname: req.body.userlastname,
-          useremail: req.body.useremail,
-          userphonenumber: req.body.userphonenumber,
-          useridrole: req.body.useridrole,
-          userpassword: req.body.userpassword,
-        });
-  
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.userpassword, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.userpassword = hash;
-            newUser
-              .save()
-              .then((user) => res.json(user))
-              .catch((err) => console.log(err));
-          });
-        });
-      }
-    });
-  });
+app.post("/register", Users.createUser);
+
+app.post("/login", Users.loginUser);
   
 app.put("/", async (req, res) => {
     try {
@@ -162,60 +132,6 @@ app.delete("/", async (req, res) => {
     }
   });
 
-app.post("/login", async (req, res) => {
-    //////// FORM VALIDATION
-    const { errors, isValid } = validateLoginInput(req.body);
-  
-    //////// CHECK VALIDATION
-    if (!isValid) {
-       return res.status(400).json(errors);
-    }
-   
-     const useremail = req.body.useremail;
-     const userpassword = req.body.userpassword;
-   
-     ///////// FIND USER BY EMAIL
-     usermodel.findOne({ useremail }).then(user => {
-       /////// CHECK IF USER EXISTS
-       if (!user) {
-         return res.status(404).json({ infoError: "Email not found" });
-       }
-      
-       /////// CHECK PASSWORD
-       bcrypt.compare(userpassword, user.userpassword).then(isMatch => {
-         if (isMatch) {
-           // USER MATCHED
-           // CREATE JWT PAYLOAD
-           const payload = {
-             id: user.id,
-             username: user.username,
-             userastname: user.userlastname,
-             useremail: user.useremail,
-           };
-   
-           // SIGN TOKEN
-           jwt.sign(
-             payload,
-             keys.secretOrKey,
-             {
-               expiresIn: 100 
-             },
-             (err, token) => {
-               res.json({
-                id: user.id,
-                username: user.username,
-                userastname: user.userlastname,
-                useremail: user.useremail,
-               });
-             }
-           );
-         } else {
-           return res
-             .status(400)
-             .json({ infoError: "Password incorrect" });
-         }
-       });
-     });
-  });
+
 
 module.exports = app;
