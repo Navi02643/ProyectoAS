@@ -13,9 +13,6 @@ const homeworkSchema = new Schema({
   homeworkproject: {
     type: String,
   },
-  homeworkuser: {
-    type: String,
-  },
   homeworkname: {
     type: String,
   },
