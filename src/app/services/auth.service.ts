@@ -32,6 +32,7 @@ export class AuthService {
           if (res) {
             // guardar token
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+            console.log(res.dataUser);
           }
         })
       );
